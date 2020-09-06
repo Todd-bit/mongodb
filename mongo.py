@@ -3,7 +3,7 @@ import os
 if os.path.exists("env.py"):
     import env
 
-MONGODB_URI = os.environ.get("MONGO_URI")
+MONGO_URI = os.environ.get("MONGO_URI")
 DATABASE = "myTestDB"
 COLLECTION = "myFirstMDB"
 
@@ -19,6 +19,10 @@ def mongo_connect(url):
 conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
+
+new_doc = {"first": "ken", "last": "adams", "dob": "11/03/1952", "hair_color": "grey", "occupation", "writer", "nationality": "british"}
+
+coll.insert(new_doc)
 
 documents = coll.find()
 
